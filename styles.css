@@ -1,0 +1,58 @@
+/****Général****/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  background-color:rgba(50, 50, 50, .1);
+}
+
+/******JOUEURS*******/
+.player{
+  position: relative;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  font-weight: 950;
+  letter-spacing: 2px;
+}
+.score{
+  font-size: 3em;
+  font-weight: 700;
+  color: #EB4D4C;
+}
+.active {
+  background-color: rgba(247, 247, 247);
+}
+.active .player {
+  font-weight: 300;
+}
+.active .player::after {
+  content: "\2022";
+  font-size: 50px;
+  color: #EB4D4C;
+  position: absolute; 
+  top: 30px;
+}
+.current-score{
+  color: #fff;
+  font-size: 2em;
+}
+.current-label {
+  margin-bottom: 10px;
+  font-size: 1.4em;
+  color: black;
+} 
+.playerContainer-0-panel, .playerContainer-1-panel {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* position: relative; */
+}
