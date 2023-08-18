@@ -56,6 +56,7 @@ body{
   align-items: center;
   /* position: relative; */
 }
+
 /***Boutons***/
 
 .container-btn{
@@ -102,6 +103,7 @@ i {
   vertical-align: text-top;
   margin-top: -5px;
 }
+
 /***Image***/
 
 .img-dice{
@@ -115,3 +117,49 @@ i {
   border-radius: 8px;
   /* z-index: 1; */
 } 
+
+/* Animation à la fin du jeu */
+.confetti{
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  animation: falling 5s infinite;
+  position: absolute;
+  top: -20px;
+  z-index: 2;
+}
+
+#allconfettis {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes falling{
+  0%{
+    top: -20px;
+    transform: rotate(180deg);
+  }
+  20%{
+    transform: translateX(100px) rotate(360deg);
+  }
+  40%{
+    transform: translateX(40px) rotate(180deg);
+    
+  }
+  50%{
+    opacity: 1;
+    transform: translateX(20px) rotate(360deg);
+
+  }
+  70%{
+    opacity: 0.2;
+    transform: translateX(30px) rotate(180deg);
+  }
+  100%{
+    opacity: 0;
+    top: 100%;
+    transform: translateX(20px) rotate(360deg);
+  }
+}

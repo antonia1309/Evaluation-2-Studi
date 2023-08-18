@@ -1,19 +1,22 @@
 
-/*
+/* Info général sur le jeu de dé
 - click sur roll dice pour lancer le dé
 - click sur hold permet d'envoyer les points du round=curent au global et 
 passe  la main à l'autre joueur
 - click sur new game: initialisation à 0
 - round=current: score temporaire remis à 0
 - global: score général
-- si le dé = 1, score round perdu et fin du tour
+- si le dé = 1, score round perdu et fin du tour du joueur et passe à l'autre joueur
 - gain à 100 points
 */
+
+
 //Déclarer dans un tableau les noms des joueurs
 const playerNames = ['PLAYER 1', 'PLAYER 2'];
 
 //Déclaration des variables et remise à 0
 let gamePlaying, roundScore, activePlayer, scorePlayer;
+//stopAnimation();
 init();
 gamePlaying = true;
 roundScore = 0;
@@ -31,6 +34,7 @@ function resetScores(){
   document.getElementById('score-1').textContent = 0;
   document.getElementById('current-1').textContent = 0;
 }
+
 
 /*************BOUTON ROLL DICE  ****************/
 
@@ -56,6 +60,7 @@ document.querySelector('.btn-roll-dice').addEventListener('click', function(){
   }
 });
 
+
 /*************BOUTON HOLD  ****************/
 
 //fonction  qui permet d'ajoutée la valeur du score temporaire au score total du joueur et passe son tour à l'autre joueur.
@@ -76,6 +81,11 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
       const winnerName = document.getElementById('player-' + winnerIndex);
       winnerName.textContent = playerNames[winnerIndex] + " WINNER";
       winnerName.style.color = '#3CB371';
+      //Lancement confettis lors du gain
+      setAnimationWin();
+      //Ajout de son pour le gagnant
+      let audio = new Audio("sounds/cheer2.mp3");
+                  audio.play();
 
       //Affiche le nom du joueur perdant
       const loserName = document.getElementById('player-' + loserIndex);
@@ -109,20 +119,22 @@ function changePlayer(){
   //.toggle permet d ajouter la classe active s'il n y en a pas
 }
 
-  /*************BOUTON NEW GAME ****************/
+
+/*************BOUTON NEW GAME ****************/
 document.querySelector('.btn-new-game').addEventListener('click', init);
 let newScore = [0,0];// Ajouter une nouvelle variable pour stocker les scores totaux
 
 //RESET GLOBAL (function init)
 function init(){
   //réinitialiser à 0
+  stopAnimation();
   gamePlaying = true;
   roundScore = 0;
   activePlayer = 0;
   scorePlayer = [0,0];
 
   //on recache le dé
-  document.querySelector('.img-dice').display = 'none';
+  document.querySelector('.img-dice').style.display = 'none';
 
   //Réintialiser les noms des joueurs
   function updatePlayers() {
@@ -155,7 +167,7 @@ function init(){
 };
 
 
-  /*************BOUTON EDIT NAMES ****************/
+/*************BOUTON EDIT NAMES ****************/
 document.querySelector('.btn-edit').addEventListener('click', editNames);
 
 //Function pour indiquer le nom des joueurs
@@ -209,5 +221,32 @@ function editNames() {
       });
     }
   });
-  
 }
+
+/*************ANIMATION A LA FIN DU JEU : CONFETTIS ****************/
+
+//fonction pr les animations confetti quand on gagne
+function setAnimationWin(){
+  let animateDiv = document.getElementById("allconfettis");
+  animateDiv.innerHTML = "";
+
+  for(let i = 0; i < 100; i++){
+    let confeti = document.createElement("div");
+    confeti.classList.add("confetti");
+    confeti.style.left =getRandomArbitrary(0,100)+'%';
+    confeti.style.animationDelay = 50*i+"ms";
+    confeti.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);/*pour créer des couleurs aleatoires */
+    animateDiv.appendChild(confeti);/*indique que confeti est un enfant de animateDiv */
+  }
+}
+
+//fonction pr stopper l animation
+function stopAnimation(){
+let animateDiv = document.getElementById("allconfettis");
+animateDiv.innerHTML = ""; /*pour vider la page html soit le allconfettis */
+}
+
+function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
