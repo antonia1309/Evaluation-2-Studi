@@ -1,9 +1,9 @@
 
-/* Info général sur le jeu de dé
-- click sur roll dice pour lancer le dé
-- click sur hold permet d'envoyer les points du round=curent au global et 
+/* Info générale sur le jeu de dé:
+- clique sur roll dice pour lancer le dé
+- clique sur hold permet d'envoyer les points du round=curent au global et 
 passe  la main à l'autre joueur
-- click sur new game: initialisation à 0
+- clique sur new game: initialisation à 0
 - round=current: score temporaire remis à 0
 - global: score général
 - si le dé = 1, score round perdu et fin du tour du joueur et passe à l'autre joueur
@@ -16,7 +16,6 @@ const playerNames = ['PLAYER 1', 'PLAYER 2'];
 
 //Déclaration des variables et remise à 0
 let gamePlaying, roundScore, activePlayer, scorePlayer;
-//stopAnimation();
 init();
 gamePlaying = true;
 roundScore = 0;
@@ -47,8 +46,9 @@ document.querySelector('.btn-roll-dice').addEventListener('click', function(){
     diceRandom.src = 'IMG/dice-' + dice + '.png';
     
     /*Si le dé est différent de 1, le joueur continue de jouer. 
-    On ajoute le résultat du dé au score global du joueur.*/
-    /*Si le dé est égal à 1, le joueur actif perd son score temporaire (on le remet à zéro) et le tour passe au joueur suivant en utilisant la fonction nextPlayer().*/
+    On ajoute le résultat du dé au score global du joueur.
+    /*Si le dé est égal à 1, le joueur actif perd son score temporaire 
+    (on le remet à zéro) et le tour passe au joueur suivant en utilisant la fonction nextPlayer().*/
     
     if (dice !== 1){
       roundScore +=dice;
@@ -63,14 +63,14 @@ document.querySelector('.btn-roll-dice').addEventListener('click', function(){
 
 /*************BOUTON HOLD  ****************/
 
-//fonction  qui permet d'ajoutée la valeur du score temporaire au score total du joueur et passe son tour à l'autre joueur.
+//fonction  qui permet d'ajouter la valeur du score temporaire au score total du joueur et passe son tour à l'autre joueur.
 document.querySelector('.btn-hold').addEventListener('click', function(){
   if(gamePlaying){
     scorePlayer[activePlayer] += roundScore;
     //Mise à jour du score du joueur actif.
     document.getElementById('score-'+activePlayer).textContent = scorePlayer[activePlayer];
     
-    if(scorePlayer[activePlayer] >= 10){
+    if(scorePlayer[activePlayer] >= 100){
       
       //Variables gagnant ou perdant
       const winnerIndex = activePlayer;
@@ -81,9 +81,9 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
       const winnerName = document.getElementById('player-' + winnerIndex);
       winnerName.textContent = playerNames[winnerIndex] + " WINNER";
       winnerName.style.color = '#3CB371';
-      //Lancement confettis lors du gain
+      //Lancement confettis 
       setAnimationWin();
-      //Ajout de son pour le gagnant
+      //Ajout de son 
       let audio = new Audio("sounds/cheer2.mp3");
                   audio.play();
 
@@ -116,7 +116,7 @@ function changePlayer(){
   //Désactive ou active l'apparence des joueurs qui jouent
   document.querySelector('.playerContainer-0-panel').classList.toggle('active');
   document.querySelector('.playerContainer-1-panel').classList.toggle('active');
-  //.toggle permet d ajouter la classe active s'il n y en a pas
+  
 }
 
 
@@ -236,14 +236,14 @@ function setAnimationWin(){
     confeti.style.left =getRandomArbitrary(0,100)+'%';
     confeti.style.animationDelay = 50*i+"ms";
     confeti.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);/*pour créer des couleurs aleatoires */
-    animateDiv.appendChild(confeti);/*indique que confeti est un enfant de animateDiv */
+    animateDiv.appendChild(confeti);
   }
 }
 
 //fonction pr stopper l animation
 function stopAnimation(){
 let animateDiv = document.getElementById("allconfettis");
-animateDiv.innerHTML = ""; /*pour vider la page html soit le allconfettis */
+animateDiv.innerHTML = ""; 
 }
 
 function getRandomArbitrary(min, max) {
