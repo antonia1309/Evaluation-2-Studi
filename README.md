@@ -15,3 +15,7 @@ Lancer le dé. S’il obtient un 1, son score ROUND est perdu et c’est la fin 
 ## Technologies utilisées
 
 HTML, CSS , JAVASCRIPT et BOOTSTRAP
+
+## Lien du jeu déployé
+
+https://antonia1309.github.io/Evaluation-2-Studi/
