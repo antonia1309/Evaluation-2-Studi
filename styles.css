@@ -9,7 +9,7 @@ body{
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
-  background-color:rgba(50, 50, 50, .1);
+  background: linear-gradient(90deg, rgba(247, 247, 247) 50%, rgba(50, 50, 50, .1)50%);
 }
 
 /******JOUEURS*******/
@@ -20,53 +20,37 @@ body{
   font-weight: 950;
   letter-spacing: 2px;
 }
+
 .score{
   font-size: 3em;
   font-weight: 700;
   color: #EB4D4C;
 }
-.active {
-  background-color: rgba(247, 247, 247);
-}
+
 .active .player {
   font-weight: 300;
 }
+
 .active .player::after {
   content: "\2022";
   font-size: 50px;
   color: #EB4D4C;
   position: absolute; 
-  top: 30px;
+  top: -10px;
 }
+
 .current-score{
   color: #fff;
   font-size: 2em;
 }
+
 .current-label {
   margin-bottom: 10px;
   font-size: 1.4em;
   color: black;
 } 
-.playerContainer-0-panel, .playerContainer-1-panel {
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-/***Boutons***/
-
-.container-btn{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} 
 
 button {
-  position: absolute;
   width: 200px;
   color: #555;
   background: none;
@@ -74,24 +58,6 @@ button {
   font-size: 20px;
   cursor: pointer;
   font-weight: 300;
-  margin-bottom: 10px;
-}
-
-.btn-new-game {
-  top: 40px;
-}
-
-.btn-roll-dice {
-  top: 400px;
-}
-
-.btn-hold {
-  top: 500px;
-}
-
-.btn-edit{
-  top: 10px;
-  right: 10px;
 }
 
 i {
@@ -103,104 +69,23 @@ i {
   margin-top: -5px;
 }
 
-/***Image***/
+/***Image Dé***/
 
 .img-dice{
-  position: absolute;
-  top: 180px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center; 
+  justify-content: center; 
   height: 100px;
+  width: 100px; 
   border-radius: 8px;
 } 
 
-/* Animation à la fin du jeu */
 
-.confetti{
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  animation: falling 5s infinite;
-  position: absolute;
-  top: -20px;
-  z-index: 2;
-}
-
-#allconfettis {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-}
-
-@keyframes falling{
-  0%{
-    top: -20px;
-    transform: rotate(180deg);
-  }
-  20%{
-    transform: translateX(100px) rotate(360deg);
-  }
-  40%{
-    transform: translateX(40px) rotate(180deg);
-    
-  }
-  50%{
-    opacity: 1;
-    transform: translateX(20px) rotate(360deg);
-
-  }
-  70%{
-    opacity: 0.2;
-    transform: translateX(30px) rotate(180deg);
-  }
-  100%{
-    opacity: 0;
-    top: 100%;
-    transform: translateX(20px) rotate(360deg);
-  }
-}
-
-/*****LES MÉDIQUERIES*****/
-@media screen and (max-width: 769px){
-
-  .btn-edit{
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%); 
-  }
-
-  .btn-new-game{
-    top: 130px;
-  }
-  .img-dice{
-    top: 600px;
-    
-  
-  }
-
-  .btn-roll-dice {
-    top: 770px;
-  }
-  
-  .btn-hold {
-    top: 810px;
-  }
-
-  .playerContainer-0-panel, .playerContainer-1-panel{
-    width: 100%;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    
-  }
-
-  .current-box{
-    display: inline-block;
-    width: 80%;
+/*****MÉDIAQUERIES*****/
+@media screen and (max-width: 769px){ 
+  body{
+    background: linear-gradient(180deg, rgba(247, 247, 247) 50%, rgba(50, 50, 50, .1)50%);
   }
 
 }
