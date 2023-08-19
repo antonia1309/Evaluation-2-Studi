@@ -1,6 +1,6 @@
-#Jeu de Dé avec JAVASCRIPT
+# Jeu de Dé avec JAVASCRIPT
 
-##Règles du jeu
+## Règles du jeu
 
 Le jeu comprend 2 joueurs sur un seul et même écran. Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL).
 
@@ -12,6 +12,6 @@ Cliquer sur l’option “Hold”, qui permet d’envoyer les points du ROUND ve
 
 Lancer le dé. S’il obtient un 1, son score ROUND est perdu et c’est la fin de son tour. Le premier joueur qui atteint les 100 points sur global gagne le jeu.
 
-##Technologies utilisées
+## Technologies utilisées
 
 HTML, CSS , JAVASCRIPT et BOOTSTRAP
